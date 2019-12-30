@@ -1,0 +1,15 @@
+.env
+.idea/
+
+# Source for the following rules: https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*/*/*/__pycache__/
+*/*/__pycache__/
+*/__pycache__/
+local_settings.py
+# C extensions
+*.so
