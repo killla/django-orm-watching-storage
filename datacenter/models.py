@@ -1,12 +1,11 @@
 from django.db import models
 from django.utils import timezone
+import time
+
 
 def format_duration(duration):
-    hours = int(duration.total_seconds() // 3600)
-    minutes = str(int((duration.total_seconds() % 3600) // 60))
-    if len(minutes) == 1:
-        minutes = '0'+minutes
-    return f'{hours}:{minutes}'
+    return time.strftime("%H:%M", time.gmtime(duration))
+
 
 class Passcard(models.Model):
     is_active = models.BooleanField(default=False)
@@ -34,13 +33,13 @@ class Visit(models.Model):
         )
 
     def get_duration(visit):
-        if visit.leaved_at == None:
+        if not visit.leaved_at:
             now = timezone.now()
             delta = now - visit.entered_at
         else:
             delta = visit.leaved_at - visit.entered_at
-        return delta
+        return delta.total_seconds()
 
     def is_visit_long(visit, minutes=60):
         time_of_visit = visit.get_duration()
-        return time_of_visit.total_seconds() > minutes * 60
+        return time_of_visit > minutes * 60
