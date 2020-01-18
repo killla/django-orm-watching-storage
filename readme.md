@@ -9,14 +9,19 @@
  - порт
  - имя базы данных
  - имя пользователя базы данных
- - пароль
+ - пароль базы данных
+ - секретный ключ запуска Django
  
-Эти параметры задаются в файле ``.env`` в папке проекта:
+Эти параметры задаются в файле ``.env`` в папке проекта (либо через переменные окружения операционной системы):
 * DB_HOST=''
 * DB_PORT=''
 * DB_NAME=''
 * DB_USER=''
 * DB_PASSWORD=''
+* SECRET_KEY=''
+
+Также можно включить режим отладки Django, задав переменную окружения:
+* DEBUG='True'
 
 Скачать архив по ссылке: 
 [https://github.com/killla/django-orm-watching-storage/archive/master.zip](https://github.com/killla/django-orm-watching-storage/archive/master.zip)

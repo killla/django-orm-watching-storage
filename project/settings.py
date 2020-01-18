@@ -1,11 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-def get_debug_status():
-    return os.getenv("DEBUG") == '1'
-
 load_dotenv()
-
 
 DATABASES = {
     'default': {
@@ -20,15 +16,9 @@ DATABASES = {
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-if os.getenv('DEBUG').lower() == 'true':
-    DEBUG = True
-elif os.getenv('DEBUG').lower() == 'false':
-    DEBUG = False
-else:
-    DEBUG = False
-
+DEBUG = os.getenv('DEBUG').lower() == 'true'
 
 ROOT_URLCONF = "project.urls"
 
